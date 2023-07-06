@@ -1,1 +1,1 @@
-# data_analyst_projects
+# personal portfolio prorjects for the data analyst jobs application.

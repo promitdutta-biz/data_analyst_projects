@@ -87,14 +87,14 @@ customer_orders a join driver_order b
 on a.order_id=b.order_id
 where b.cancellation is NULL OR b.cancellation in ("NaN", "")
 
-2 How many successful orders by  EACH driver?
+2 How many successful orders delivered by each driver?
 
 Select driver_id, count(*) 
 from driver_order
 where duration is not NULL
 group by driver_id
 
-3 How many of each type of roll was delivered?
+3 How many type of roll was delivered in numbers?
 
 Select a.roll_id , count(*) from
 customer_orders a join driver_order b
@@ -113,7 +113,7 @@ from customer_orders a join rolls b
 on a.roll_id=b.roll_id
 group by  a.roll_id, b.roll_name,a.customer_id
 
-5 How many maximum number of rolls were delivered in a single order?
+5 What is the maximum number of rolls delivered in a single order?
 
 select TOP 1 a.order_id, count(a.roll_id) cnt
 from customer_orders a join driver_order b
@@ -230,7 +230,7 @@ group by driver_id
 
 
 
-2. Is there any relationship beween the number of rolls and how  long the order takes to preapare?
+2. Is there any relationship beween the number of rolls and how long the order took to preapare?
 
 Select order_id, count(roll_id) as cnt , sum(DIFF)/count(roll_id) as Tym_Diff_per_order from
 (Select a.order_id,a.customer_id, a.roll_id,a.not_include_items, a.extra_items_included,
@@ -264,7 +264,7 @@ where b.pickup_time IS NOT NULL) c
 group by customer_id
 
 
-4 What was the difference between the longest and the shortest delivery times for all orders?
+4 What was the difference between the longest and the shortest delivery times for the orders?
 
 /*Select* from driver_order
 
